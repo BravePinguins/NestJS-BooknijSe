@@ -3,9 +3,11 @@ import {
   Column,
   DataType,
   DefaultScope,
+  HasMany,
   Model,
   Table,
 } from "sequelize-typescript";
+import { Property } from "./property.model";
 
 export enum ROLE {
   ADMIN = "ADMIN",
@@ -19,7 +21,7 @@ export enum ROLE {
 export class User extends Model<User> {
   @ApiProperty({
     example: "0e631cae-9a35-4f86-b198-c0dbb762d808",
-    description: "Unique user uuid",
+    description: "Unique uuid",
   })
   @Column({
     type: DataType.UUID,
@@ -59,4 +61,7 @@ export class User extends Model<User> {
   @ApiProperty({ example: ROLE.USER, description: "Unique name of role" })
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   role: string;
+
+  @HasMany(() => Property, { onDelete: "cascade" })
+  properties: Property[];
 }
