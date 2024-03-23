@@ -132,7 +132,7 @@ export class Property extends Model<Property> {
     description: "Cost per night",
   })
   @Column({
-    type: DataType.NUMBER,
+    type: DataType.INTEGER,
     allowNull: false,
     defaultValue: 0,
   })
@@ -143,7 +143,7 @@ export class Property extends Model<Property> {
     description: "Number of available beds",
   })
   @Column({
-    type: DataType.NUMBER,
+    type: DataType.INTEGER,
     allowNull: false,
     defaultValue: 1,
   })
@@ -154,7 +154,7 @@ export class Property extends Model<Property> {
     description: "Size of the property.",
   })
   @Column({
-    type: DataType.NUMBER,
+    type: DataType.INTEGER,
     allowNull: false,
     defaultValue: 1,
   })
