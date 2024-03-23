@@ -8,6 +8,7 @@ import { PropertyAmenity } from "./models/property-amenity.model";
 import { PropertyAmenityMapper } from "./models/property-amenity-mapper.model";
 import { PropertyModule } from "./modules/property.module";
 import { UserModule } from "./modules/user.module";
+import { PropertyType } from "./models/property-type.model";
 
 @Module({
   imports: [
@@ -23,7 +24,13 @@ import { UserModule } from "./modules/user.module";
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, Property, PropertyAmenity, PropertyAmenityMapper],
+      models: [
+        User,
+        Property,
+        PropertyAmenity,
+        PropertyAmenityMapper,
+        PropertyType,
+      ],
       autoLoadModels: true,
     }),
     PropertyModule,

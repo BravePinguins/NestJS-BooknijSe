@@ -11,6 +11,7 @@ import {
 import { User } from "./user.model";
 import { PropertyAmenity } from "./property-amenity.model";
 import { PropertyAmenityMapper } from "./property-amenity-mapper.model";
+import { PropertyType } from "./property-type.model";
 
 @Table({ tableName: "property" })
 export class Property extends Model<Property> {
@@ -28,6 +29,13 @@ export class Property extends Model<Property> {
 
   @BelongsToMany(() => PropertyAmenity, () => PropertyAmenityMapper)
   propertyAmenities: PropertyAmenity[];
+
+  @ForeignKey(() => PropertyType)
+  @Column({ type: DataType.UUID })
+  propertyTypeId: string;
+
+  @BelongsTo(() => PropertyType)
+  propertyType: PropertyType;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.UUID })
