@@ -6,15 +6,18 @@ import { PropertyAmenity } from "src/models/property-amenity.model";
 import { Property } from "src/models/property.model";
 import { PropertyAmenityService } from "src/services/property-amenity.service";
 import { PropertyService } from "src/services/property.service";
+import { PropertyTypeService } from "../services/property-type.service";
+import { PropertyType } from "../models/property-type.model";
 
 @Module({
-  providers: [PropertyService, PropertyAmenityService],
+  providers: [PropertyService, PropertyAmenityService, PropertyTypeService],
   controllers: [PropertyController],
   imports: [
     SequelizeModule.forFeature([
       Property,
       PropertyAmenity,
       PropertyAmenityMapper,
+      PropertyType,
     ]),
   ],
   exports: [PropertyService],
