@@ -29,109 +29,121 @@ export class Property extends Model<Property> {
 
   @ApiProperty({
     example: "Duży dom",
-    description: "Tytuł oferty",
+    description: "Offer title",
   })
   @Column({
+    type: DataType.STRING,
     allowNull: false,
   })
   title: string;
 
   @ApiProperty({
     example: "Duży dom z trzema łóżkami i mikrofalą",
-    description: "Opis oferty",
+    description: "Offer description",
   })
   @Column({
+    type: DataType.TEXT,
     allowNull: false,
   })
   description: string;
 
   @ApiProperty({
     example: "Kraków",
-    description: "Nazwa miasta",
+    description: "City name",
   })
   @Column({
+    type: DataType.STRING,
     allowNull: false,
   })
   city: string;
 
   @ApiProperty({
     example: "Polska",
-    description: "Nazwa państwa",
+    description: "Country name",
   })
   @Column({
+    type: DataType.STRING,
     allowNull: false,
   })
   country: string;
 
   @ApiProperty({
     example: "30-800",
-    description: "Kod pocztowy",
+    description: "Post code",
   })
   @Column({
+    type: DataType.STRING,
     allowNull: false,
   })
-  post_code: string;
+  postCode: string;
 
   @ApiProperty({
     example: "os. Ptaka 17",
     description: "Nazwa ulicy/osiedla",
   })
   @Column({
+    type: DataType.STRING,
     allowNull: false,
   })
   street: string;
 
   @ApiProperty({
     example: "30.15",
-    description: "Szerokość geograficzna",
+    description: "Latitude",
   })
   @Column({
+    type: DataType.STRING,
     allowNull: false,
   })
   latitude: string;
 
   @ApiProperty({
     example: "40.8",
-    description: "Długość geograficzna",
+    description: "Longitude",
   })
   @Column({
+    type: DataType.STRING,
     allowNull: false,
   })
   longitude: string;
 
   @ApiProperty({
     example: "true",
-    description: "Czy jest dostępna oferta do wynajęcia",
+    description: "Czy nieruchomość jest dostępna do wynajęcia",
   })
   @Column({
+    type: DataType.BOOLEAN,
     allowNull: false,
   })
-  is_available: boolean;
+  isAvailable: boolean;
 
   @ApiProperty({
     example: "false",
     description: "Czy oferta jest aktywna",
   })
   @Column({
+    type: DataType.BOOLEAN,
     allowNull: false,
   })
-  is_active: boolean;
+  isActive: boolean;
 
   @ApiProperty({
-    example: "300zł",
+    example: "300",
     description: "Koszt za jedną noc",
   })
   @Column({
+    type: DataType.NUMBER,
     allowNull: false,
     defaultValue: 0,
   })
-  price_per_night: number;
+  pricePerNight: number;
 
   @ApiProperty({
     example: "4",
     description: "Ilość dostępnych łóżek",
   })
   @Column({
+    type: DataType.NUMBER,
     allowNull: false,
     defaultValue: 1,
   })
@@ -142,6 +154,7 @@ export class Property extends Model<Property> {
     description: "Wielkość nieruchomości",
   })
   @Column({
+    type: DataType.NUMBER,
     allowNull: false,
     defaultValue: 1,
   })
