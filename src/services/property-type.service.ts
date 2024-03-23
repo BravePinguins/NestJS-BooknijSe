@@ -60,8 +60,8 @@ export class PropertyTypeService implements OnApplicationBootstrap {
         { value: "Camper/RV" },
         { value: "Other" },
       ];
-      propertyTypes.map(async (property) => {
-        return await this.create(property);
+      propertyTypes.map(async (type) => {
+        return await this.create(type);
       });
     }
   }
