@@ -28,7 +28,7 @@ export class Property extends Model<Property> {
   id: string;
 
   @ApiProperty({
-    example: "Duży dom",
+    example: "Big house",
     description: "Offer title",
   })
   @Column({
@@ -38,7 +38,7 @@ export class Property extends Model<Property> {
   title: string;
 
   @ApiProperty({
-    example: "Duży dom z trzema łóżkami i mikrofalą",
+    example: "Large house with three beds and a microwave",
     description: "Offer description",
   })
   @Column({
@@ -79,7 +79,7 @@ export class Property extends Model<Property> {
 
   @ApiProperty({
     example: "os. Ptaka 17",
-    description: "Nazwa ulicy/osiedla",
+    description: "Street/neighbourhood name",
   })
   @Column({
     type: DataType.STRING,
@@ -109,7 +109,7 @@ export class Property extends Model<Property> {
 
   @ApiProperty({
     example: "true",
-    description: "Czy nieruchomość jest dostępna do wynajęcia",
+    description: "Is the property available for rent?",
   })
   @Column({
     type: DataType.BOOLEAN,
@@ -119,7 +119,7 @@ export class Property extends Model<Property> {
 
   @ApiProperty({
     example: "false",
-    description: "Czy oferta jest aktywna",
+    description: "Is the offer active?",
   })
   @Column({
     type: DataType.BOOLEAN,
@@ -129,7 +129,7 @@ export class Property extends Model<Property> {
 
   @ApiProperty({
     example: "300",
-    description: "Koszt za jedną noc",
+    description: "Cost per night",
   })
   @Column({
     type: DataType.NUMBER,
@@ -140,7 +140,7 @@ export class Property extends Model<Property> {
 
   @ApiProperty({
     example: "4",
-    description: "Ilość dostępnych łóżek",
+    description: "Number of available beds",
   })
   @Column({
     type: DataType.NUMBER,
@@ -150,8 +150,8 @@ export class Property extends Model<Property> {
   beds: number;
 
   @ApiProperty({
-    example: "40m^2",
-    description: "Wielkość nieruchomości",
+    example: "40",
+    description: "Size of the property.",
   })
   @Column({
     type: DataType.NUMBER,
