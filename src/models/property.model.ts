@@ -39,7 +39,7 @@ export class Property extends Model<Property> {
 
   @ApiProperty({
     example: "Large house with three beds and a microwave",
-    description: "Offer description",
+    description: "Property description",
   })
   @Column({
     type: DataType.TEXT,
