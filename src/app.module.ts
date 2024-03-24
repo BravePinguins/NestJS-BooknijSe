@@ -9,6 +9,7 @@ import { PropertyAmenityMapper } from "./models/property-amenity-mapper.model";
 import { PropertyModule } from "./modules/property.module";
 import { UserModule } from "./modules/user.module";
 import { PropertyType } from "./models/property-type.model";
+import { AuthModule } from "./modules/auth.module";
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { PropertyType } from "./models/property-type.model";
     }),
     PropertyModule,
     UserModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
