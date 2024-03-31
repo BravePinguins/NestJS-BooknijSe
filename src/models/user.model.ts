@@ -47,9 +47,16 @@ export class User extends Model<User> {
   @Column({ type: DataType.STRING, allowNull: true })
   phone: string;
 
-  @ApiProperty({ example: "12345678", description: "User password" })
+  @ApiProperty({ example: "kot12345678", description: "User password" })
   @Column({ type: DataType.STRING, allowNull: false })
   password: string;
+
+  @ApiProperty({
+    example: "dsaafaf21yg218gd81bdyduabdha",
+    description: "User salt",
+  })
+  @Column({ type: DataType.STRING, allowNull: true })
+  salt: string;
 
   @ApiProperty({
     example: "Mam piękne domki nad wodą",
@@ -61,6 +68,10 @@ export class User extends Model<User> {
   @ApiProperty({ example: ROLE.USER, description: "Unique name of role" })
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   role: string;
+
+  @ApiProperty({ example: "dsad23321kdask21", description: "Unique Token" })
+  @Column({ type: DataType.STRING, allowNull: true })
+  currentTokenId: string | null;
 
   @HasMany(() => Property, { onDelete: "cascade" })
   properties: Property[];
