@@ -7,15 +7,17 @@ import { v4 as uuid } from "uuid";
 export class UserService {
   constructor(@InjectModel(User) private userRepository: typeof User) {}
 
-  async getUser() {
+  async getAllUsers() {
     return await this.userRepository.findAll();
   }
-  async getUserEmail(email: string) {
+
+  async getUserByEmail(email: string) {
     return await this.userRepository.findOne({
       where: { email },
       attributes: ["id", "email", "password"],
     });
   }
+
   async generateToken(user: User): Promise<string> {
     let token;
     let userWithThisToken = null;

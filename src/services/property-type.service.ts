@@ -5,7 +5,7 @@ import {
   OnApplicationBootstrap,
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
-import { PropertyType } from "../models/property-type.model";
+import { EPropertyType, PropertyType } from "../models/property-type.model";
 import { CreatePropertyTypeDto } from "../models/dto/create/create-property-type.dto";
 
 @Injectable()
@@ -42,24 +42,27 @@ export class PropertyTypeService implements OnApplicationBootstrap {
     const propertyType = await this.propertyTypeRepository.findOne();
     if (!propertyType) {
       const propertyTypes = [
-        { value: "Apartment" },
-        { value: "House" },
-        { value: "Villa" },
-        { value: "Condo" },
-        { value: "Cottage" },
-        { value: "Bed & Breakfast" },
-        { value: "Loft" },
-        { value: "Townhouse" },
-        { value: "Guesthouse" },
-        { value: "Bungalow" },
-        { value: "Chalet" },
-        { value: "Farmstay" },
-        { value: "Boat" },
-        { value: "Tent" },
-        { value: "Treehouse" },
-        { value: "Camper/RV" },
-        { value: "Other" },
+        { value: EPropertyType.APARTMENT, text: "Apartament" },
+        { value: EPropertyType.HOUSE, text: "Dom" },
+        { value: EPropertyType.BOAT, text: "Łódź" },
+        { value: EPropertyType.TENT, text: "Namiot" },
+        { value: EPropertyType.TREE_HOUSE, text: "Dom na drzewie" },
+        {
+          value: EPropertyType.CAMPER_TRAILER,
+          text: "Kemping",
+        },
+        { value: EPropertyType.TOWER, text: "Wieża" },
+        { value: EPropertyType.PALACE, text: "Pałac" },
+        {
+          value: EPropertyType.APARTMENT_WITH_SEA_VIEW,
+          text: "Widok na morze",
+        },
+        { value: EPropertyType.FARM, text: "Farma" },
+        { value: EPropertyType.ISLAND_CABIN, text: "Domek na wyspie" },
+        { value: EPropertyType.MOUNTAIN_HOSTEL, text: "Schronisko górskie" },
+        { value: EPropertyType.OTHER, text: "Inny" },
       ];
+
       propertyTypes.map(async (type) => {
         return await this.create(type);
       });

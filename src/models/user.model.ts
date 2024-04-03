@@ -67,7 +67,7 @@ export class User extends Model<User> {
 
   @ApiProperty({ example: ROLE.USER, description: "Unique name of role" })
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
-  role: string;
+  role: ROLE;
 
   @ApiProperty({ example: "dsad23321kdask21", description: "Unique Token" })
   @Column({ type: DataType.STRING, allowNull: true })

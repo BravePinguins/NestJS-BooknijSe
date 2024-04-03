@@ -3,8 +3,8 @@ import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { PropertyType } from "src/models/property-type.model";
 import { PropertyTypeService } from "src/services/property-type.service";
 
-@ApiTags("Property type")
-@Controller("property-type")
+@ApiTags("Property types")
+@Controller("property-types")
 export class PropertyTypeController {
   constructor(private propertyTypeService: PropertyTypeService) {}
 

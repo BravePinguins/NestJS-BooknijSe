@@ -43,7 +43,7 @@ export class AuthService {
         });
       }
 
-      const user = await this.userService.getUserEmail(req.email);
+      const user = await this.userService.getUserByEmail(req.email);
       console.log(user);
       if (!user) {
         return res.json({
