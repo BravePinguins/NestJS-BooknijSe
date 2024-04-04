@@ -55,7 +55,7 @@ export class UserService {
       user.role = newUser.role;
       await user.save();
 
-      return user;
+      return res.json({ isSuccess: true, user: user.id });
     }
   }
 }
