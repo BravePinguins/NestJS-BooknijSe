@@ -20,9 +20,7 @@ export class AuthService {
   } {
     const payload: JwtPayload = { id: currentTokenId };
     const expiresIn = 60 * 60 * 24;
-    const accessToken = sign(payload, process.env.SECRET_TOKEN_KEY, {
-      expiresIn,
-    });
+    const accessToken = sign(payload, process.env.JWT_SECRET, { expiresIn });
     return {
       accessToken,
       expiresIn,
@@ -46,6 +44,7 @@ export class AuthService {
       }
 
       const user = await this.userService.getUserByEmail(req.email);
+      console.log(user);
       if (!user) {
         return res.json({
           isSuccess: false,
@@ -53,11 +52,8 @@ export class AuthService {
         });
       }
 
-      const password = await this.hashService.hashCompare(
-        req.password,
-        user.password
-      );
-      if (!password) {
+      const password = req.password;
+      if (user.password !== password) {
         return res.json({
           isSuccess: false,
           message: "Niepoprawne dane logowania!",

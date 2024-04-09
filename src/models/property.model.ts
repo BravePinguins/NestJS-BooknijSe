@@ -27,6 +27,139 @@ export class Property extends Model<Property> {
   })
   id: string;
 
+  @ApiProperty({
+    example: "Big house",
+    description: "Offer title",
+  })
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  title: string;
+
+  @ApiProperty({
+    example: "Large house with three beds and a microwave",
+    description: "Property description",
+  })
+  @Column({
+    type: DataType.TEXT,
+    allowNull: false,
+  })
+  description: string;
+
+  @ApiProperty({
+    example: "Kraków",
+    description: "City name",
+  })
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  city: string;
+
+  @ApiProperty({
+    example: "Polska",
+    description: "Country name",
+  })
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  country: string;
+
+  @ApiProperty({
+    example: "30-800",
+    description: "Post code",
+  })
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  postCode: string;
+
+  @ApiProperty({
+    example: "os. Ptaka 17",
+    description: "Street/neighbourhood name",
+  })
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  street: string;
+
+  @ApiProperty({
+    example: "30.15",
+    description: "Latitude",
+  })
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  latitude: string;
+
+  @ApiProperty({
+    example: "40.8",
+    description: "Longitude",
+  })
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  longitude: string;
+
+  @ApiProperty({
+    example: "true",
+    description: "Is the property available for rent?",
+  })
+  @Column({
+    type: DataType.BOOLEAN,
+    allowNull: false,
+  })
+  isAvailable: boolean;
+
+  @ApiProperty({
+    example: "false",
+    description: "Is the offer active?",
+  })
+  @Column({
+    type: DataType.BOOLEAN,
+    allowNull: false,
+  })
+  isActive: boolean;
+
+  @ApiProperty({
+    example: "300",
+    description: "Cost per night",
+  })
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+  })
+  pricePerNight: number;
+
+  @ApiProperty({
+    example: "4",
+    description: "Number of available beds",
+  })
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+    defaultValue: 1,
+  })
+  beds: number;
+
+  @ApiProperty({
+    example: "40",
+    description: "Size of the property.",
+  })
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+    defaultValue: 1,
+  })
+  size: number;
+
   @BelongsToMany(() => PropertyAmenity, () => PropertyAmenityMapper)
   propertyAmenities: PropertyAmenity[];
 
