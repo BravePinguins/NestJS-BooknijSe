@@ -52,8 +52,11 @@ export class AuthService {
         });
       }
 
-      const password = req.password;
-      if (user.password !== password) {
+      const password = await this.hashService.hashCompare(
+        req.password,
+        user.password
+      );
+      if (!password) {
         return res.json({
           isSuccess: false,
           message: "Niepoprawne dane logowania!",
