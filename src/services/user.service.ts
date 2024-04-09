@@ -44,16 +44,22 @@ export class UserService {
         isSuccess: false,
         message: "Taki użytkownik już istnieje!",
       });
+    } else if (newUser.password.length < 2) {
+      return res.json({
+        isSuccess: false,
+        message: "Hasło jest za krótkie!",
+      });
+    } else if (!newUser.email.includes("@")) {
+      return res.json({
+        isSuccess: false,
+        message: "Email ma zły format!",
+      });
     } else {
-      const hashPwd = this.hashService.hashData(newUser.password);
-      const user = new User();
-      user.email = newUser.email;
-      user.firstName = newUser.firstName;
-      user.lastName = newUser.lastName;
-      user.password = await hashPwd;
-      user.currentTokenId = newUser.currentTokenId;
-      user.role = newUser.role;
-      await user.save();
+      const hashPwd = await this.hashService.hashData(newUser.password);
+      const user = await this.userRepository.create({
+        ...newUser,
+        password: hashPwd,
+      });
 
       return res.json({ isSuccess: true, user: user.id });
     }
