@@ -45,7 +45,7 @@ export class AuthService {
         });
       }
 
-      const user = await this.userService.getUserEmail(req.email);
+      const user = await this.userService.getUserByEmail(req.email);
       if (!user) {
         return res.json({
           isSuccess: false,
