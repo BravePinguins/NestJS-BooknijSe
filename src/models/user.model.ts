@@ -31,7 +31,7 @@ export class User extends Model<User> {
   })
   id: string;
 
-  @ApiProperty({ example: "Kacper", description: "User first name" })
+  @ApiProperty({ example: "John", description: "User first name" })
   @Column({ type: DataType.STRING, allowNull: false })
   firstName: string;
 
@@ -47,7 +47,7 @@ export class User extends Model<User> {
   @Column({ type: DataType.STRING, allowNull: true })
   phone: string;
 
-  @ApiProperty({ example: "kot12345678", description: "User password" })
+  @ApiProperty({ example: "password123", description: "User password" })
   @Column({ type: DataType.STRING, allowNull: false })
   password: string;
 
