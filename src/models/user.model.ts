@@ -31,7 +31,7 @@ export class User extends Model<User> {
   })
   id: string;
 
-  @ApiProperty({ example: "Kacper", description: "User first name" })
+  @ApiProperty({ example: "John", description: "User first name" })
   @Column({ type: DataType.STRING, allowNull: false })
   firstName: string;
 
@@ -47,16 +47,9 @@ export class User extends Model<User> {
   @Column({ type: DataType.STRING, allowNull: true })
   phone: string;
 
-  @ApiProperty({ example: "kot12345678", description: "User password" })
+  @ApiProperty({ example: "password123", description: "User password" })
   @Column({ type: DataType.STRING, allowNull: false })
   password: string;
-
-  @ApiProperty({
-    example: "dsaafaf21yg218gd81bdyduabdha",
-    description: "User salt",
-  })
-  @Column({ type: DataType.STRING, allowNull: true })
-  salt: string;
 
   @ApiProperty({
     example: "Mam piękne domki nad wodą",
@@ -66,7 +59,7 @@ export class User extends Model<User> {
   description: string;
 
   @ApiProperty({ example: ROLE.USER, description: "Unique name of role" })
-  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: false })
   role: ROLE;
 
   @ApiProperty({ example: "dsad23321kdask21", description: "Unique Token" })
