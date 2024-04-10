@@ -13,6 +13,31 @@ export class UserService {
     private hashService: HashService
   ) {}
 
+  private async registerValidation(user: RegisterUserDto) {
+    const errors = [];
+    const existingUser = await this.getUserByEmail(user.email);
+    if (existingUser) {
+      errors.push("Taki użytkownik już istnieje!");
+    }
+
+    if (user.password.length < 4) {
+      errors.push("Hasło jest za krótkie!");
+    }
+
+    if (!user.email.includes("@")) {
+      errors.push("Email ma zły format!");
+    }
+
+    if (errors.length > 0) {
+      return {
+        isSuccess: false,
+        errors: errors,
+      };
+    }
+
+    return { isSuccess: true };
+  }
+
   async getAllUsers() {
     return await this.userRepository.findAll();
   }
@@ -39,22 +64,9 @@ export class UserService {
   }
 
   async register(newUser: RegisterUserDto, res: Response) {
-    if (await this.getUserByEmail(newUser.email)) {
-      return res.json({
-        isSuccess: false,
-        message: "Taki użytkownik już istnieje!",
-      });
-    } else if (newUser.password.length < 2) {
-      return res.json({
-        isSuccess: false,
-        message: "Hasło jest za krótkie!",
-      });
-    } else if (!newUser.email.includes("@")) {
-      return res.json({
-        isSuccess: false,
-        message: "Email ma zły format!",
-      });
-    } else {
+    const validationResult = await this.registerValidation(newUser);
+
+    if (validationResult.isSuccess) {
       const hashPwd = await this.hashService.hashData(newUser.password);
       const user = await this.userRepository.create({
         ...newUser,
@@ -62,6 +74,11 @@ export class UserService {
       });
 
       return res.json({ isSuccess: true, user: user.id });
+    } else {
+      return res.json({
+        isSuccess: false,
+        errors: validationResult.errors,
+      });
     }
   }
 }

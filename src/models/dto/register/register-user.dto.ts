@@ -4,6 +4,7 @@ import {
   IsNotEmpty,
   IsOptional,
   IsString,
+  MinLength,
 } from "class-validator";
 import { ROLE } from "../../user.model";
 import { ApiProperty } from "@nestjs/swagger";
@@ -39,6 +40,7 @@ export class RegisterUserDto {
   })
   @IsNotEmpty()
   @IsString()
+  @MinLength(4)
   password: string;
 
   @ApiProperty({
